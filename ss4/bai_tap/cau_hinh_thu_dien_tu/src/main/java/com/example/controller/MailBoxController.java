@@ -15,7 +15,7 @@ import java.util.Arrays;
 @Controller
 public class MailBoxController {
     @Autowired
-    IMailBoxService iMailBoxService;
+    private IMailBoxService iMailBoxService;
 
     @GetMapping("/showMail")
     public String showForm(Model model) {
@@ -31,8 +31,8 @@ public class MailBoxController {
     @GetMapping("/updateFormMail")
     public String showUpdate(Model model) {
         model.addAttribute("mailBox", iMailBoxService.mailBox());
-        model.addAttribute("languages", Arrays.asList("English", "Vietnamese", "Japanese", "Chinese"));
-        model.addAttribute("pageSize", Arrays.asList(5, 10, 15, 20, 25, 50, 100));
+        model.addAttribute("languages", iMailBoxService.listLanguages());
+        model.addAttribute("pageSize", iMailBoxService.listPageSize());
         return "/update";
     }
 
