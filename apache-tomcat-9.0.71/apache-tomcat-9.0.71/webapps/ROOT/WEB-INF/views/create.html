@@ -17,27 +17,22 @@
   <div class="d-block text-center">
     <h1>Create product</h1>
     <div class="mb-3">
-      <a href="/product/showList">Back to the list</a>
+      <a href="/product">Back to the list</a>
     </div>
   </div>
   <div class="d-flex justify-content-center">
-    <form action="/product/saveProduct" method="post" th:object="${product}">
-      <input type="hidden" th:field="*{id}"/>
+    <form action="/createProduct" method="post" th:object="${product}">
       <div class="my-2">
         <label>Name of the product</label>
         <input type="text" th:field="*{name}">
       </div>
       <div class="my-2">
-        <label>Price</label>
-        <input type="text" th:field="*{price}">
+        <label>Brand</label>
+        <input type="text" th:field="*{brand}">
       </div>
       <div class="my-2">
         <label>Describe</label>
         <input type="text" th:field="*{describe}">
-      </div>
-      <div class="my-2">
-        <label>Producer</label>
-        <input type="text" th:field="*{producer}">
       </div>
       <input class="btn btn-primary" type="submit" value="Save">
     </form>
