@@ -20,6 +20,11 @@
         <input type="text" th:field="*{authorBlog}">
     </div>
     <div>
+        <select th:field="*{category.id}">
+            <option th:each="category1: ${categoryList}" th:text="${category1.nameCategory}" th:value="${category1.id}"></option>
+        </select>
+    </div>
+    <div>
         <input type="submit" class="btn btn-primary" value="Submit">
     </div>
 </form>

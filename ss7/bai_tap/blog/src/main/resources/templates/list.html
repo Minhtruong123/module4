@@ -10,42 +10,55 @@
         }
 
         th, td {
-            border: 1px solid black;
+            border: 1px solid black !important;
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body class="d-flex justify-content-center">
-<div class="mt-5" style="border: 1px solid black; display: inline-block">
-    <h1>List Blogs</h1>
+<div class="mt-5" style="display: inline-block">
+    <h1 class="text-center">List Blogs</h1>
     <form action="/blog" class="d-flex" role="search">
         <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    <a href="/blog/showCreate">Create new blog</a>
-    <table>
+    <a href="/blog/showCreate" style="text-decoration: none">Create new blog</a>
+    <table class="table border">
         <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Content</th>
             <th>Author</th>
+            <th>Category</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="blog, iterStat: ${blogsList}">
+        <tr th:each="blog, iterStat: ${blogsList.content}">
             <td th:text="${iterStat.count}"></td>
             <td><a th:href="@{/blog/inform/{id}(id=${blog.getId()})}" th:text="${blog.getNameBlog()}"></a></td>
             <td th:text="${blog.getContentBlog()}"></td>
             <td th:text="${blog.getAuthorBlog()}"></td>
-            <td><a th:href="@{/blog/deleteBlog/{id}(id=${blog.getId()})}">Delete</a></td>
-            <td><a th:href="@{/blog/showEdit/{id}(id=${blog.getId()})}">Edit</a></td>
+            <td th:text="${blog.getCategory()?.nameCategory}"></td>
+            <td><a class="btn btn-danger" th:href="@{/blog/deleteBlog/{id}(id=${blog.getId()})}">Delete</a></td>
+            <td><a class="btn btn-primary" th:href="@{/blog/showEdit/{id}(id=${blog.getId()})}">Edit</a></td>
         </tr>
         </tbody>
     </table>
+    <div>
+        <a th:if="${blogsList.hasPrevious()}"
+           th:href="@{/blog(page=${blogsList.number -1}, search=${search})}">
+            Previous
+        </a>
+        <a th:each="p: ${pages}" th:href="@{/blog(page=${blogsList.number -1}, search=${search})}" th:text="${p}"></a>
+        <a th:if="${blogsList.hasNext()}"
+           th:href="@{/blog(page=${blogsList.number +1}, search=${search})}">
+            Next
+        </a>
+    </div>
 </div>
 </body>
 </html>

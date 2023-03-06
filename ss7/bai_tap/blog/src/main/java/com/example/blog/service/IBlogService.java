@@ -1,6 +1,8 @@
 package com.example.blog.service;
 
 import com.example.blog.model.Blog;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +19,5 @@ public interface IBlogService {
 
     void editBlog(Blog blog);
 
-    List<Blog> searchBlog(String search);
+    Page<Blog> searchBlog(String search,Pageable pageable);
 }

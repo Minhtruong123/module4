@@ -1,6 +1,7 @@
-package com.example.repository;
+package com.example.repository.impl;
 
 import com.example.model.Product;
+import com.example.repository.IProductRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import java.util.List;
 @Repository
 public class ProductRepository implements IProductRepository {
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public List<Product> listAllProducts(String search) {
