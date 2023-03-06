@@ -51,8 +51,9 @@ public class BlogController {
     }
 
     @GetMapping("/inform/{id}")
-    public String getInform(@PathVariable int id, Model model) {
+    public String getInform(@PathVariable Integer id, Model model) {
         model.addAttribute("blogInform", blogService.getBlog(id));
+//        model.addAttribute("categoryInform", categoryService.getCategoryById(id));
         return "/information";
     }
 

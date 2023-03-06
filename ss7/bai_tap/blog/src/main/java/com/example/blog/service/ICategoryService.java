@@ -7,4 +7,6 @@ import java.util.List;
 @Service
 public interface ICategoryService {
     List<Category> listAllCategory();
+
+    Category getCategoryById(int id);
 }

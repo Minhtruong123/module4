@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <style>
-      th,td{
-        border: 1px solid black;
-      }
+        th, td {
+            border: 1px solid black;
+        }
     </style>
     <title>Information blog</title>
 </head>
 <body>
+<!--<h1 th:object="${categoryInform}">-->
+<!--    <p th:text="*{nameCategory}"></p>-->
+<!--</h1>-->
 <table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Author</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:object="${blogInform}">
-    <td th:text="${blogInform.id}"></td>
-    <td th:text="${blogInform.nameBlog}"></td>
-    <td th:text="${blogInform.contentBlog}"></td>
-    <td th:text="${blogInform.authorBlog}"></td>
-  </tr>
-  </tbody>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Content</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${blogInform}">
+        <td th:text="${blogInform.id}"></td>
+        <td th:text="${blogInform.nameBlog}"></td>
+        <td th:text="${blogInform.contentBlog}"></td>
+        <td th:text="${blogInform.authorBlog}"></td>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>
