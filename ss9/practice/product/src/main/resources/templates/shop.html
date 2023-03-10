@@ -7,22 +7,24 @@
     <title>Shop</title>
 </head>
 <body>
-<p>
-    <a class="btn btn-primary text-decoration-none" href="/shopping-cart">Your cart</a>
-</p>
-<table class="table table-border">
-    <tr>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Add To Cart</td>
-    </tr>
-    <th:block th:each="product:${products}">
+<div class="container-fluid">
+    <p>
+        <a class="btn btn-primary text-decoration-none" href="/shopping-cart">Your cart</a>
+    </p>
+    <table class="table table-border">
         <tr>
-            <td><a class="text-decoration-none" th:href="@{/inform/{id}(id=${product.id})}" th:text="${product.name}"></a></td>
-            <td th:text="${product.price}"></td>
-            <td><a class="text-decoration-none" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Add To Cart</td>
         </tr>
-    </th:block>
-</table>
+        <th:block th:each="product:${products}">
+            <tr>
+                <td><a class="text-decoration-none" th:href="@{/inform/{id}(id=${product.id})}" th:text="${product.name}"></a></td>
+                <td th:text="${product.price}"></td>
+                <td><a class="text-decoration-none" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
 </body>
 </html>
