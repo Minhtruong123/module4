@@ -7,26 +7,28 @@
     <title>Information</title>
 </head>
 <body>
-<p>
-    <a class="btn btn-warning text-decoration-none" href="/shop">Shop</a>
-</p>
-<table class="table table-border">
-    <thead>
-    <tr>
-        <td>Id</td>
-        <td>Name of the product</td>
-        <td>Price</td>
-        <td>Describe</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:object="${product}">
-        <td th:text="${product.get().id}"></td>
-        <td th:text="${product.get().name}"></td>
-        <td th:text="${product.get().price}"></td>
-        <td th:text="${product.get().description}"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    <p>
+        <a class="btn btn-warning text-decoration-none" href="/shop">Shop</a>
+    </p>
+    <table class="table table-border">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name of the product</td>
+            <td>Price</td>
+            <td>Describe</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${product}">
+            <td th:text="${product.get().id}"></td>
+            <td th:text="${product.get().name}"></td>
+            <td th:text="${product.get().price}"></td>
+            <td th:text="${product.get().description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
