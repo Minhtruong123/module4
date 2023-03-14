@@ -12,9 +12,7 @@ const renderBlogs = (blogs,append) => {
             </div>
         `
     }
-    if (append){
-        $("#listBlog").append(element);
-    } else $("#listBlog").html(element);
+    append ? $("#listBlog").append(element) : $("#listBlog").html(element);
 }
 
 const loadMore = (nextPage) => loadBlogs(nextPage,true);
@@ -33,7 +31,7 @@ const renderLoadMoreButton = (blogPageData) => {
 }
 
 const loadBlogs = (page, append) => {
-    let keySearch = document.getElementById("search").value;
+    let keySearch = $("#search").val();
     $.ajax({
         type:"GET",
         url:`http://localhost:8080/api/blog?page=${page ? page : "0"}&search=` + keySearch ,
