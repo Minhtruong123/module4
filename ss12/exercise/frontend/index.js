@@ -1,4 +1,4 @@
-function renderBlogs(blogs,append){
+const renderBlogs = (blogs,append) => {
     let element = "";
     for (let blog of blogs){
         element += `
@@ -17,23 +17,22 @@ function renderBlogs(blogs,append){
     } else $("#listBlog").html(element);
 }
 
-function loadMore(nextPage){
-    loadBlogs(nextPage,true);
-}
+const loadMore = (nextPage) => loadBlogs(nextPage,true);
 
-function renderLoadMoreButton(blogPageData){
+
+const renderLoadMoreButton = (blogPageData) => {
     if (blogPageData.number < blogPageData.totalPages-1){
         $("#loadMoreButton").html(
             `
-            <button type="button" class="btn btn-secondary" onclick="loadMore(${blogPageData.number +1})">
+            <button id="btnLoadMore" type="button" class="btn btn-secondary" onclick="loadMore(${blogPageData.number +1})">
                 Load More
             </button>
             `
         );
-    } else $("#loadMoreButton").remove();
+    } else $("#btnLoadMore").remove();
 }
 
-function loadBlogs(page, append){
+const loadBlogs = (page, append) => {
     let keySearch = document.getElementById("search").value;
     $.ajax({
         type:"GET",
@@ -45,7 +44,7 @@ function loadBlogs(page, append){
             renderBlogs(data.content,append),
             renderLoadMoreButton(data)
         },
-        error: function(error){
+        error: (error) => {
             console.log(error);
         }
     });
