@@ -1,6 +1,7 @@
 package com.example.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,8 @@ public class Category {
     private String nameCategory;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     private Set<Blog> blogList;
 
     public Category() {

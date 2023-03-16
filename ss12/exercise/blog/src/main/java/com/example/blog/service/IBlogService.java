@@ -14,4 +14,6 @@ public interface IBlogService {
     Blog getBlog(int id);
 
     List<Blog> listBlogsByCategory(String category);
+
+    Blog createBlog(Blog blog);
 }
