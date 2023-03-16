@@ -19,4 +19,9 @@ public class CategoryService implements ICategoryService{
     public Category getCategoryById(int id) {
         return categoryRepository.getById(id);
     }
+
+    @Override
+    public Category getCategoryByName(String name) {
+        return categoryRepository.findCategoriesByNameCategoryContains(name);
+    }
 }

@@ -29,4 +29,9 @@ public class BlogService implements IBlogService{
     public List<Blog> listBlogsByCategory(String category) {
         return blogRepository.findBlogByCategoryNameCategory(category);
     }
+
+    @Override
+    public Blog createBlog(Blog blog) {
+        return blogRepository.save(blog);
+    }
 }

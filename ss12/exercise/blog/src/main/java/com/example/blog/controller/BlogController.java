@@ -1,13 +1,16 @@
 package com.example.blog.controller;
 
+import com.example.blog.dto.BlogDTO;
 import com.example.blog.model.Blog;
 import com.example.blog.model.Category;
 import com.example.blog.service.IBlogService;
 import com.example.blog.service.ICategoryService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,12 +48,9 @@ public class BlogController {
     }
 
     @GetMapping("/category")
-    public ResponseEntity<Iterable<Category>> findAllCategories() {
-        List<Category> categories = categoryService.listAllCategory();
-        if (categories.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(categories, HttpStatus.OK);
+    public List<Category> findAllCategories() {
+        return categoryService.listAllCategory();
+
     }
 
     @GetMapping("/category/{category}")
@@ -60,5 +60,13 @@ public class BlogController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(blogs, HttpStatus.OK);
+    }
+
+    @PostMapping( value="")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Blog createNewBlog(@RequestBody BlogDTO blog){
+        Blog blog1 = new Blog();
+        BeanUtils.copyProperties(blog, blog1);
+        return blogService.createBlog(blog1);
     }
 }
